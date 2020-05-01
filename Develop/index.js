@@ -21,7 +21,7 @@ inquirer
 			// return repo.name;
 			// console.log (repoName);
 
-			fs.writeFile("README-2.md", avatar, function (err) {
+			fs.writeFile("README.md", avatar, function (err) {
 				if (err) {
 					throw err;
 				}
