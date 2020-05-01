@@ -16,7 +16,7 @@ inquirer
 			console.log(res.data.email);
 
 			const avatarURL = res.data.avatar_url;
-			const avatar = '![Avatar](${' + avatarURL + '})';
+			const avatar = '![Avatar](' + avatarURL + ')';
 			// const repoName = res.data.map(function (repo) {
 			// return repo.name;
 			// console.log (repoName);
