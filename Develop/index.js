@@ -1,12 +1,49 @@
-const questions = [
+const fs = require("fs");
+const axios = require("axios");
+const inquirer = require("inquirer");
 
-];
+inquirer
+	.prompt({
+		message: "Enter your GitHub username:",
+		name: "username"
+	})
+	.then(function ({ username }) {
+		const queryUrl = `https://api.github.com/users/${username}`;
 
-function writeToFile(fileName, data) {
-}
+		axios.get(queryUrl).then(function (res) {
+			// console.log(res.data);
+			console.log(res.data.avatar_url);
+			console.log(res.data.email);
 
-function init() {
+			const avatarURL = res.data.avatar_url;
+			const avatar = '![Avatar](${' + avatarURL + '})';
+			// const repoName = res.data.map(function (repo) {
+			// return repo.name;
+			// console.log (repoName);
 
-}
+			fs.writeFile("README-2.md", avatar, function (err) {
+				if (err) {
+					throw err;
+				}
+			});
 
-init();
+		});
+
+	});
+
+
+
+
+			// const questions = [
+
+			// ];
+
+			// function writeToFile(fileName, data) {
+			// }
+
+			// function init() {
+
+			// }
+
+
+			// init();
