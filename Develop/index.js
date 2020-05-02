@@ -68,24 +68,17 @@ inquirer
 		axios.get(queryUrl).then(function (res) {
 			// console.log(res.data);
 
-			// Get Username
-			const username = res.data.login;
-
-			// Get Avatar Image
-			const avatarURL = res.data.avatar_url;
-			const avatar = '![Avatar](' + avatarURL + ')';
-
-			// Get Email
-			const email = res.data.email;
-
 			let document = 
+			`# Good README Generator \n \n` + 
+
 			// Avatar
-			'# Good README Generator \n \n' +
-			avatar + '\n \n' +
+			`![Avatar](${res.data.avatar_url}) \n \n` +
+
 			// Usermame
-			'Your username is: ' + username + '\n \n' +
+			`# Username: ${res.data.login} \n \n` +
+
 			// Email
-			'Your email is: ' + email + '\n';
+			`Your email is: ${res.data.email} \n \n`;
 
 			fs.writeFile("README.md", document, function (err) {
 				if (err) {
@@ -141,6 +134,11 @@ inquirer
 					name: "test",
 					type:"input"
 				},
+				{
+					message:"Additional questions? ",
+					name: "questions",
+					type:"input"
+				},
 			])
 			.then(function(answers){
 				console.log(answers);
@@ -148,14 +146,14 @@ inquirer
 				let userQs = 
 				// Prompt second set of questions
 				`## Second Set of Questions  \n`
-	
+
 				let body2 =
 
 				// Badge
 				`![bage image](https://img.shields.io/static/v1?label=Version&message=${answers.badge}&color=<COLOR>) \n \n` +
 
 				// Project Title
-				`Project title: ${answers.project} \n \n` +
+				`### Project title: \n \n` + `${answers.project} \n \n` +
 
 				// Project Description
 				`Project description: ${answers.description} \n \n` +
