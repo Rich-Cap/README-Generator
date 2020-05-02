@@ -6,7 +6,10 @@ Your usrname is: Rich-Cap
  
 Your mail is: null
 ## Second Set of Questions  
- 
 
-![bage image](https://img.shields.io/static/v1?label=Version&message=3&color=<COLOR>)
+![bage image](https://img.shields.io/static/v1?label=Version&message=2&color=<COLOR>) 
+ 
+Project title: yes 
+ 
+Project description: undefined 
  

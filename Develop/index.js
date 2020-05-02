@@ -8,16 +8,16 @@ const questions = [
 	// 	name: "username",
 	// 	type:"input"
 	// },
-	{
-		message:"What is a badge name? ",
-		name: "badge",
-		type:"input"
-	},
-	{
-		message:"What is the project title? ",
-		name: "project",
-		type:"input"
-	},
+	// {
+	// 	message:"What is a badge name? ",
+	// 	name: "badge",
+	// 	type:"input"
+	// },
+	// {
+	// 	message:"What is the project title? ",
+	// 	name: "project",
+	// 	type:"input"
+	// },
 	// {
 	// 	message:"What is the description? ",
 	// 	name: "description",
@@ -79,16 +79,15 @@ inquirer
 			// Get Email
 			const email = res.data.email;
 
-			let header = 
+			let document = 
 			// Avatar
 			'# Good README Generator \n \n' +
 			avatar + '\n \n' +
 			// Usermame
-			'Your usrname is: ' + username + '\n \n' +
+			'Your username is: ' + username + '\n \n' +
 			// Email
-			'Your mail is: ' + email + '\n';
+			'Your email is: ' + email + '\n';
 
-			var document = header;
 			fs.writeFile("README.md", document, function (err) {
 				if (err) {
 					throw err;
@@ -103,30 +102,78 @@ inquirer
 					name: "badge",
 					type:"input"
 				},
+				{
+					message:"What is the project title? ",
+					name: "project",
+					type:"input"
+				},
+				{
+					message:"What is your project description? ",
+					name: "description",
+					type:"input"
+				},
+				// {
+				// 	message:"What are the table of contents? ",
+				// 	name: "table",
+				// 	type:"input"
+				// },
+				// {
+				// 	message:"What is the installation? ",
+				// 	name: "install",
+				// 	type:"input"
+				// },
+				// {
+				// 	message:"What is the usage? ",
+				// 	name: "usage",
+				// 	type:"input"
+				// },
+				// {
+				// 	message:"What is the license number? ",
+				// 	name: "license",
+				// 	type:"input"
+				// },
+				// ,
+				// {
+				// 	message:"Who is contributing? ",
+				// 	name: "contribute",
+				// 	type:"input"
+				// },
+				// {
+				// 	message:"What are the required tests? ",
+				// 	name: "test",
+				// 	type:"input"
+				// },
 			])
 			.then(function(answers){
 				console.log(answers);
 
-				const badgeName = answers.badge;
-				let header2 = 
+				let userQs = 
 				// Prompt second set of questions
-				'## Second Set of Questions  \n \n'
+				`## Second Set of Questions  \n`
 	
 				let body2 =
-				// Badge
-				'![bage image](https://img.shields.io/static/v1?label=Version&message=' + badgeName + '&color=<COLOR>)' + '\n \n'
 
-				var document = header2.concat('\n', body2);
+				// Badge
+				`![bage image](https://img.shields.io/static/v1?label=Version&message=${answers.badge}&color=<COLOR>) \n \n` +
+
+				// Project Title
+				`Project title: ${answers.project} \n \n` +
+
+				// Project Description
+				`Project description: ${answers.description} \n \n`
+
+				var document = userQs.concat('\n', body2);
 				fs.appendFile("README.md", document, function (err) {
 					if (err) {
 						throw err;
 					}
 				});
 			})
+			.catch(function(err) {
+				console.log(err);
+			});
 		})
 	})
-
-
 
 				// const questions = [
 				// 	{
