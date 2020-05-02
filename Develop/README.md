@@ -2,27 +2,27 @@
 
 ![bage image](https://img.shields.io/static/v1?label=Version&message=2&color=<COLOR>) 
  
-### Project title: fsdf 
+### Project title: Title 
  
-Project description: dfs 
+Project description: sd 
  
-Table of contents: sd 
+Table of contents: dfs 
  
-Installation: sd 
+Installation: fsd 
  
-Usage: fff 
+Usage: f 
  
-License: s 
+License: dsdf 
  
-Contribute:  
+Contribute: sdf 
  
-Tests:  
+Tests: sd 
  
 # Good README Generator 
  
-![Avatar](https://avatars0.githubusercontent.com/u/61250225?v=4) 
+![Avatar](https://avatars0.githubusercontent.com/u/61104208?v=4) 
  
-# Username: PManapat 
+# Username: Rich-Cap 
  
 Your email is: null 
  
