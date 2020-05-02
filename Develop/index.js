@@ -56,7 +56,6 @@ const questions = [
 	// }
 ];
 
-
 inquirer
 	.prompt({
 			message: "Enter your GitHub username:",
@@ -112,37 +111,36 @@ inquirer
 					name: "description",
 					type:"input"
 				},
-				// {
-				// 	message:"What are the table of contents? ",
-				// 	name: "table",
-				// 	type:"input"
-				// },
-				// {
-				// 	message:"What is the installation? ",
-				// 	name: "install",
-				// 	type:"input"
-				// },
-				// {
-				// 	message:"What is the usage? ",
-				// 	name: "usage",
-				// 	type:"input"
-				// },
-				// {
-				// 	message:"What is the license number? ",
-				// 	name: "license",
-				// 	type:"input"
-				// },
-				// ,
-				// {
-				// 	message:"Who is contributing? ",
-				// 	name: "contribute",
-				// 	type:"input"
-				// },
-				// {
-				// 	message:"What are the required tests? ",
-				// 	name: "test",
-				// 	type:"input"
-				// },
+				{
+					message:"What are the table of contents? ",
+					name: "table",
+					type:"input"
+				},
+				{
+					message:"What is the installation? ",
+					name: "install",
+					type:"input"
+				},
+				{
+					message:"What is the usage? ",
+					name: "usage",
+					type:"input"
+				},
+				{
+					message:"What is the license number? ",
+					name: "license",
+					type:"input"
+				},
+				{
+					message:"Who is contributing? ",
+					name: "contribute",
+					type:"input"
+				},
+				{
+					message:"What are the required tests? ",
+					name: "test",
+					type:"input"
+				},
 			])
 			.then(function(answers){
 				console.log(answers);
@@ -160,7 +158,25 @@ inquirer
 				`Project title: ${answers.project} \n \n` +
 
 				// Project Description
-				`Project description: ${answers.description} \n \n`
+				`Project description: ${answers.description} \n \n` +
+
+				// Table of contents
+				`Table of contents: ${answers.table} \n \n` +
+
+				// Installation
+				`Installation: ${answers.install} \n \n` +
+
+				// Usage
+				`Usage: ${answers.usage} \n \n` +
+
+				// License
+				`License: ${answers.license} \n \n` +
+
+				// Contributing
+				`Contribute: ${answers.contribute} \n \n` +
+
+				// Tests
+				`Tests: ${answers.test} \n \n` 
 
 				var document = userQs.concat('\n', body2);
 				fs.appendFile("README.md", document, function (err) {
@@ -174,55 +190,6 @@ inquirer
 			});
 		})
 	})
-
-				// const questions = [
-				// 	{
-				// 		message:"What is a badge name? ",
-				// 		name: "badge",
-				// 		type:"input"
-				// 	},
-				// 	{
-				// 		message:"What is the project title? ",
-				// 		name: "project",
-				// 		type:"input"
-				// 	},
-				// 	{
-				// 		message:"What is the description? ",
-				// 		name: "description",
-				// 		type:"input"
-				// 	},
-				// 	{
-				// 		message:"What are the table of contents? ",
-				// 		name: "table",
-				// 		type:"input"
-				// 	},
-				// 	{
-				// 		message:"What is the installation? ",
-				// 		name: "install",
-				// 		type:"input"
-				// 	},
-				// 	{
-				// 		message:"What is the usage? ",
-				// 		name: "usage",
-				// 		type:"input"
-				// 	},
-				// 	{
-				// 		message:"What is the license number? ",
-				// 		name: "license",
-				// 		type:"input"
-				// 	},
-				// 	,
-				// 	{
-				// 		message:"Who is contributing? ",
-				// 		name: "contribute",
-				// 		type:"input"
-				// 	},
-				// 	{
-				// 		message:"What are the required tests? ",
-				// 		name: "test",
-				// 		type:"input"
-				// 	}];
-
 
 			// function writeToFile(fileName, data) {
 
