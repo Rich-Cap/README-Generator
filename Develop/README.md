@@ -1,30 +1,28 @@
-# Good README Generator 
- 
-![Avatar](https://avatars0.githubusercontent.com/u/61104208?v=4) 
- 
-# Username: Rich-Cap 
- 
-Your email is: null 
- 
 ## Second Set of Questions  
 
 ![bage image](https://img.shields.io/static/v1?label=Version&message=2&color=<COLOR>) 
  
-### Project title: 
+### Project title: fsdf 
  
+Project description: dfs 
  
+Table of contents: sd 
  
-Project description: gf 
+Installation: sd 
  
-Table of contents: d 
+Usage: fff 
  
-Installation: gf 
+License: s 
  
-Usage: dgd 
+Contribute:  
  
-License: f 
+Tests:  
  
-Contribute: dff 
+# Good README Generator 
  
-Tests: f 
+![Avatar](https://avatars0.githubusercontent.com/u/61250225?v=4) 
+ 
+# Username: PManapat 
+ 
+Your email is: null 
  

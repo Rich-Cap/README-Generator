@@ -62,7 +62,54 @@ inquirer
 			type:"input",
 	})
 	.then(function ({ username }) {
-		const queryUrl = `https://api.github.com/users/${username}`;
+		const queryUrl = `https://api.github.com/users/${username}`
+		
+		inquirer.prompt(questions)
+			
+	.then(function(answers){
+		// console.log(answers);
+
+		let userQs = 
+		// Prompt second set of questions
+		`## Second Set of Questions  \n`
+
+		let body2 =
+
+		// Badge
+		`![bage image](https://img.shields.io/static/v1?label=Version&message=${answers.badge}&color=<COLOR>) \n \n` +
+
+		// Project Title
+		`### Project title: ` +
+		
+		`${answers.project} \n \n` +
+
+		// Project Description
+		`Project description: ${answers.description} \n \n` +
+
+		// Table of contents
+		`Table of contents: ${answers.table} \n \n` +
+
+		// Installation
+		`Installation: ${answers.install} \n \n` +
+
+		// Usage
+		`Usage: ${answers.usage} \n \n` +
+
+		// License
+		`License: ${answers.license} \n \n` +
+
+		// Contributing
+		`Contribute: ${answers.contribute} \n \n` +
+
+		// Tests
+		`Tests: ${answers.test} \n \n` 
+
+		var document = userQs.concat('\n', body2);
+		fs.writeFile("README.md", document, function (err) {
+			if (err) {
+				throw err;
+			}
+		});
 
 		axios.get(queryUrl).then(function (res) {
 			// console.log(res.data);
@@ -79,62 +126,18 @@ inquirer
 			// Email
 			`Your email is: ${res.data.email} \n \n`;
 
-			fs.writeFile("README.md", document, function (err) {
-				if (err) {
-					throw err;
-				}
-			});
-		})
-
-		.then(function(){
-			inquirer.prompt(questions)
-		.then(function(answers){
-			console.log(answers);
-
-			let userQs = 
-			// Prompt second set of questions
-			`## Second Set of Questions  \n`
-
-			let body2 =
-
-			// Badge
-			`![bage image](https://img.shields.io/static/v1?label=Version&message=${answers.badge}&color=<COLOR>) \n \n` +
-
-			// Project Title
-			`### Project title: \n \n` + `${answers.project} \n \n` +
-
-			// Project Description
-			`Project description: ${answers.description} \n \n` +
-
-			// Table of contents
-			`Table of contents: ${answers.table} \n \n` +
-
-			// Installation
-			`Installation: ${answers.install} \n \n` +
-
-			// Usage
-			`Usage: ${answers.usage} \n \n` +
-
-			// License
-			`License: ${answers.license} \n \n` +
-
-			// Contributing
-			`Contribute: ${answers.contribute} \n \n` +
-
-			// Tests
-			`Tests: ${answers.test} \n \n` 
-
-			var document = userQs.concat('\n', body2);
 			fs.appendFile("README.md", document, function (err) {
 				if (err) {
 					throw err;
 				}
 			});
 		})
-		.catch(function(err) {
-			console.log(err);
-		});
 	})
+
+	.catch(function(err) {
+		console.log(err);
+	});
+
 })
 
 			// function writeToFile(fileName, data) {
