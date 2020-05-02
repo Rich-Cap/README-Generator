@@ -1,30 +1,30 @@
 # Good README Generator 
  
-Your avatar is![Avatar](https://avatars0.githubusercontent.com/u/61104208?v=4) 
+![Avatar](https://avatars0.githubusercontent.com/u/61104208?v=4) 
  
-Your username is: Rich-Cap 
+# Username: Rich-Cap 
  
 Your email is: null 
  
 ## Second Set of Questions  
 
-![bage image](https://img.shields.io/static/v1?label=Version&message=sdf&color=<COLOR>) 
+![bage image](https://img.shields.io/static/v1?label=Version&message=2&color=<COLOR>) 
  
 ### Project title: 
  
-sdf 
  
-Project description: sdf 
  
-Table of contents: sd 
+Project description: gf 
  
-Installation: fd 
+Table of contents: d 
  
-Usage: ffd 
+Installation: gf 
+ 
+Usage: dgd 
  
 License: f 
  
-Contribute: d 
+Contribute: dff 
  
-Tests: df 
+Tests: f 
  
