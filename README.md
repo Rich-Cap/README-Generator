@@ -39,10 +39,8 @@ The README will be populated with the following:
 
 ## Images/Content
 
-```
 ![bage image](./Develop/Content/README-Generator-GIF.gif) 
 
-```
 
 ## Authors
 
