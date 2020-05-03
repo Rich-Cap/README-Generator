@@ -2,109 +2,106 @@ const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
 
+// Array of questions to prompt
 const questions = [
 	{
-		message:"What is your badge version? ",
-		name: "badge",
-		type:"input"
-	},
-	{
-		message:"What is the project title? ",
+		message:"What is the project title?",
 		name: "project",
 		type:"input"
 	},
 	{
-		message:"What is your project description? ",
+		message:"What is your project description?",
 		name: "description",
 		type:"input"
 	},
 	{
-		message:"What are the table of contents? ",
+		message:"What are the table of contents?",
 		name: "table",
 		type:"input"
 	},
 	{
-		message:"What is the installation? ",
+		message:"What are the steps required to install your project?",
 		name: "install",
 		type:"input"
 	},
 	{
-		message:"What is the usage? ",
+		message:"Provide instructions and examples for use.",
 		name: "usage",
 		type:"input"
 	},
 	{
-		message:"What is the license number? ",
+		message:"Add a license",
 		name: "license",
 		type:"input"
 	},
 	{
-		message:"Who is contributing? ",
+		message:"Who are the contributors?",
 		name: "contribute",
 		type:"input"
 	},
 	{
-		message:"What are the required tests? ",
+		message:"Provide any tests for your application",
 		name: "test",
 		type:"input"
 	},
 	{
-		message:"Additional questions? ",
+		message:"Provide additional questions to be answered for project",
 		name: "questions",
 		type:"input"
+	},
+	{
+		message:"What version is this project?",
+		name: "badge",
+		type:"number"
 	},
 ];
 
 inquirer
+	// Prompt to get Github username
 	.prompt({
-			message: "Enter your GitHub username:",
-			name: "username",
-			type:"input",
+		message: "Enter your GitHub username:",
+		name: "username",
+		type:"input",
 	})
 	.then(function ({ username }) {
+		// QueryUrl
 		const queryUrl = `https://api.github.com/users/${username}`
-		
+
+		// Prompt questions
 		inquirer.prompt(questions)
 			
 	.then(function(answers){
-		// console.log(answers);
-
-		let userQs = 
-		// Prompt second set of questions
-		`## Second Set of Questions  \n`
-
-		let body2 =
-
-		// Badge
-		`![bage image](https://img.shields.io/static/v1?label=Version&message=${answers.badge}&color=<COLOR>) \n \n` +
-
+		let document =
 		// Project Title
-		`### Project title: ` +
-		
-		`${answers.project} \n \n` +
+		`# ${answers.project} \n \n` +
 
 		// Project Description
-		`Project description: ${answers.description} \n \n` +
+		`## Description: \n \n ${answers.description} \n \n` +
 
 		// Table of contents
-		`Table of contents: ${answers.table} \n \n` +
+		`## Table of contents (Optional): \n \n ${answers.table} \n \n` +
 
 		// Installation
-		`Installation: ${answers.install} \n \n` +
+		`## Installation: \n \n ${answers.install} \n \n` +
 
 		// Usage
-		`Usage: ${answers.usage} \n \n` +
+		`## Usage: \n \n ${answers.usage} \n \n` +
 
 		// License
-		`License: ${answers.license} \n \n` +
+		`## License: \n \n ${answers.license} \n \n` +
+
+		// Badge
+		`## Badge: \n \n ![bage image](https://img.shields.io/static/v1?label=Version&message=${answers.badge}&color=<COLOR>) \n \n` +
 
 		// Contributing
-		`Contribute: ${answers.contribute} \n \n` +
+		`## Contributing: \n \n ${answers.contribute} \n \n` +
 
 		// Tests
-		`Tests: ${answers.test} \n \n` 
+		`## Tests: \n \n ${answers.test} \n \n` +
 
-		var document = userQs.concat('\n', body2);
+		// Questions
+		`## Questions: \n \n ${answers.questions} \n \n`;
+
 		fs.writeFile("README.md", document, function (err) {
 			if (err) {
 				throw err;
@@ -112,30 +109,27 @@ inquirer
 		});
 
 		axios.get(queryUrl).then(function (res) {
-			// console.log(res.data);
 
-			let document = 
-			`# Good README Generator \n \n` + 
+			let userInfo = 
+			`# User Info \n \n` + 
 
 			// Avatar
 			`![Avatar](${res.data.avatar_url}) \n \n` +
 
 			// Usermame
-			`# Username: ${res.data.login} \n \n` +
+			`## Username: \n \n ${res.data.login} \n \n` +
 
 			// Email
-			`Your email is: ${res.data.email} \n \n`;
+			`## Email: \n \n ${res.data.email} \n \n`;
 
-			fs.appendFile("README.md", document, function (err) {
+			fs.appendFile("README.md", userInfo, function (err) {
 				if (err) {
 					throw err;
 				}
 			});
-		})
+		});
 	})
-
 	.catch(function(err) {
 		console.log(err);
 	});
-
 })
